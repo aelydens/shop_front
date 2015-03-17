@@ -1,7 +1,12 @@
 All Products
 
 <%= @products.each do |product| %>
-  <%= link_to product.name, product_path(product) %>
-  <%= product.name %>
-  <%= product.category.title %>
+  <tr>
+    <td><%= link_to product.name, product_path(product) %></td>
+    <td><%= image_tag "products/#{product.image_url}" %></td>
+    <td><%= product.name %></td>
+    <td><%= product.category.title %></td>
+  </tr>
 <% end %>
+
+<%= link_to 'New Product', new_product_path %>
