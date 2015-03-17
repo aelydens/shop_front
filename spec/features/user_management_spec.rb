@@ -18,12 +18,11 @@ feature "Users" do
   end
 
   scenario "can sign in" do
-    user = create_user(username: "paaamm", password: "password")
-    sign_in(user)
+    create_user
 
     visit root_path
     click_on "Sign In"
-    fill_in :username, with: "paaamm"
+    fill_in :username, with: "luv2shop"
     fill_in :password, with: "password"
 
     within("form") do
@@ -35,7 +34,8 @@ feature "Users" do
   end
 
   scenario "can sign out" do
-    sign_in
+    user = create_user(username: "paaamm", password: "password")
+    sign_in(user)
 
     click_on "Sign Out"
 
