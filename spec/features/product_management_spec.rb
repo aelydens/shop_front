@@ -29,7 +29,9 @@ feature 'Products CRUD' do
 
   scenario 'should be able to edit a product' do
     sign_in
-    create_product(name: "Choco Pops", price: 2.50, category_id: 2)
+    Category.create!(title: "Dairy")
+    Category.create!(title: "Dry Goods")
+    create_product(name: "Choco Pops", price: 2.50, category_id: 1)
 
     visit root_path
     click_on "Choco Pops"
@@ -40,6 +42,7 @@ feature 'Products CRUD' do
     click_on "Update Product"
 
     expect(page).to have_content("Froot Loops")
+    expect(page).to have_content("Dry Goods")
     expect(page).not_to have_content("Froot Loops")
   end
 end
