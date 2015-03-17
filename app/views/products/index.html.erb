@@ -6,6 +6,8 @@ All Products
     <td><%= image_tag "products/#{product.image_url}" %></td>
     <td><%= product.name %></td>
     <td><%= product.category.title %></td>
+    <td><%= print_price(product.price) %></td>
+
   </tr>
 <% end %>
 
