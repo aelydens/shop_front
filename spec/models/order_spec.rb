@@ -7,7 +7,7 @@ describe Order do
         user = create_user
         order = Order.create!(user_id: user.id)
 
-        expect(order.user).to eq([user])
+        expect(order.user).to eq(user)
       end
     end
 
