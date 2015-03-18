@@ -4,10 +4,10 @@ module ProductsHelper
   end
 
   def print_quantity(quantity)
-    if quantity =< 0
-      content_tag("Out of Stock")
+    if quantity > 0
+      content_tag(:span, "Out of Stock")
     else
-      content_tag("In Stock", quantity)
+      content_tag(:span, "In Stock (#{quantity})")
     end
   end
 
