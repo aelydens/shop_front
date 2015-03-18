@@ -2,13 +2,14 @@ require 'rails_helper'
 
 feature 'Products CRUD' do
   scenario 'should be able to create a product' do
+    Category.create!(title: "Dairy")
     sign_in
     visit root_path
     click_on "New Product"
 
     expect(current_path).to eq(new_product_path)
-    fill_in :name, with: "Tasty Cheez"
-    fill_in :price, with: 2.40
+    fill_in :product_name, with: "Tasty Cheez"
+    fill_in :product_price, with: 2.40
     select("Dairy", from: "Category")
     click_on "Create Product"
 
@@ -17,8 +18,8 @@ feature 'Products CRUD' do
     expect(page).to have_content("Product Count: 1")
 
     click_on "New Product"
-    fill_in :name, with: "Chocolate Milk"
-    fill_in :price, with: 1.50
+    fill_in :product_name, with: "Chocolate Milk"
+    fill_in :product_price, with: 1.50
     select("Dairy", from: "Category")
     click_on "Create Product"
 
@@ -29,20 +30,22 @@ feature 'Products CRUD' do
 
   scenario 'should be able to edit a product' do
     sign_in
-    Category.create!(title: "Dairy")
+    cat = Category.create!(title: "Dairy")
     Category.create!(title: "Dry Goods")
-    create_product(name: "Choco Pops", price: 2.50, category_id: 1)
+    create_product(name: "Choco Pops", price: 2.50, category: cat)
 
     visit root_path
     click_on "Choco Pops"
-    fill_in :name, with: "Froot Loops"
-    fill_in :price, with: 3.00
+    click_on "Edit"
+
+    fill_in :product_name, with: "Froot Loops"
+    fill_in :product_price, with: 3.00
     select("Dry Goods", from: "Category")
 
     click_on "Update Product"
 
     expect(page).to have_content("Froot Loops")
     expect(page).to have_content("Dry Goods")
-    expect(page).not_to have_content("Froot Loops")
+    expect(page).not_to have_content("Choco Pops")
   end
 end

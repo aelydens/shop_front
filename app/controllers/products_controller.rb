@@ -20,6 +20,26 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:notice] = "Product successfully updated"
+      redirect_to products_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    flash[:notice] = "#{Product} successfully destroyed"
+  end
+
   def product_params
     params.require(:product).permit(:name, :price, :category_id, :image_url)
   end

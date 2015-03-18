@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'products#index'
-  resources :products, only: [:new, :create, :show, :index, :edit]
+  
+  resources :products
 
   get 'sign-in', to: 'authentication#new'
   post 'sign-in', to: 'authentication#create'

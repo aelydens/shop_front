@@ -7,7 +7,7 @@ class AuthenticationController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:notice] = "Welcome, #{user.username}"
-      redirect_to appointments_path
+      redirect_to products_path
     else
       render :new
     end
