@@ -18,24 +18,24 @@ feature "Users" do
   end
 
   scenario "can sign in" do
-    create_user
+    user = create_user
 
     visit root_path
     click_on "Sign In"
-    fill_in :username, with: "luv2shop"
-    fill_in :password, with: "password"
+    fill_in :username, with: user.username
+    fill_in :password, with: user.password
 
     within("form") do
       click_on "Sign In"
     end
 
-    expect(page).to have_content "Welcome, paaamm"
+    expect(page).to have_content "Welcome, luv2shop"
     expect(current_path).to eq(products_path)
   end
 
   scenario "can sign out" do
     user = create_user(username: "paaamm", password: "password")
-    sign_in(user)
+    sign_in
 
     click_on "Sign Out"
 
