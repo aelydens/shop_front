@@ -12,7 +12,9 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :price %>
-  <%= f.number_field :price %>
+  <%= f.text_field :price, value: (number_with_precision(f.object.price, :precision => 2) || 0) %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity %>
   <%= f.label :category_id, "Category" %>
   <%= f.collection_select(:category_id, Category.all, :id, :title) %>
   <%= f.submit %>
