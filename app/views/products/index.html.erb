@@ -8,7 +8,7 @@ Product Count: <%= @products.count %>
     <td><%= product.name %></td>
     <td><%= product.category.title %></td>
     <td><%= print_price(product.price) %></td>
-    <td><%= print_quantity(product.quantity) %></td>
+    <td>Quantity: <%= print_quantity(product.quantity) %></td>
   </tr>
 <% end %>
 
