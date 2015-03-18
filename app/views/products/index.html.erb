@@ -3,13 +3,16 @@
 Product Count: <%= @products.count %>
 
 <% @products.each do |product| %>
-  <tr>
-    <td><%= link_to product.name, product_path(product) %></td>
-    <td><%= product.name %></td>
-    <td><%= product.category.title %></td>
-    <td><%= print_price(product.price) %></td>
-    <td>Quantity: <%= print_quantity(product.quantity) %></td>
-  </tr>
+  <table>
+    <tr>
+      <td><%= link_to product.name, product_path(product) %></td>
+      <td><%= product.category.title %></td>
+      <td><%= print_price(product.price) %></td>
+      <td>Quantity: <%= print_quantity(product.quantity) %></td>
+    </tr>
+  </table>
 <% end %>
+
+<hr>
 
 <%= link_to 'New Product', new_product_path %>
