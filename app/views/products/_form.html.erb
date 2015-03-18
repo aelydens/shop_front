@@ -3,7 +3,7 @@
     <%= pluralize(@product.errors, "error") %>
     prohibited this form from being saved
     <ul>
-      <% object.errors.each do |msg| %>
+      <% @product.errors.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
