@@ -1,0 +1,9 @@
+<%= form_for @order_item do |f| %>
+<%= f.label :product_id %>
+<%= f.intger :product_id %>
+<%= f.label :order_id %>
+<%= f.integer :order_id %>
+<%= f.label :quantity %>
+<%= f.integer :quantity %>
+<%= f.submit %>
+<% end %>

@@ -9,6 +9,7 @@ Product Count: <%= @products.count %>
       <td><%= product.category.title %></td>
       <td><%= print_price(product.price) %></td>
       <td>Quantity: <%= print_quantity(product.quantity) %></td>
+      <td><%= button_to "Add to Cart", order_items_path(product_id: product.id) %></td>
     </tr>
   </table>
 <% end %>
